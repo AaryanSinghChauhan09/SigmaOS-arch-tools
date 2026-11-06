@@ -57,10 +57,11 @@ fn visit(
     out.push_str(&"  ".repeat(depth));
     out.push_str(pkg);
     out.push('\n');
-    if let Some(deps) = graph.get(pkg) {
-        for dep in deps {
-            visit(graph, dep, depth + 1, visiting, out)?;
-        }
+    let deps = graph
+        .get(pkg)
+        .ok_or_else(|| TreeError::UnknownPackage(pkg.to_string()))?;
+    for dep in deps {
+        visit(graph, dep, depth + 1, visiting, out)?;
     }
     visiting.remove(pkg);
     Ok(())
