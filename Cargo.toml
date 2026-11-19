@@ -1,10 +1,15 @@
 [package]
-name = "sigmaos_arch_tools"
+name = "SigmaOS-arch-tools"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]
+license = "Apache-2.0"
+description = "SigmaOS arch_tools component"
 
 [lib]
-name = "sigmaos_arch_tools"
+name = "arch_tools"
 path = "src/lib.rs"
+
+[dependencies]
+thiserror = "1"
+
+[dev-dependencies]
